@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(2),
+		height: "100%",
 		[theme.breakpoints.up("md")]: {
 			marginLeft: "250px",
 		},
@@ -14,6 +14,9 @@ export default makeStyles(theme => ({
 		},
 	},
 	drawer: {
+		backgroundColor: "#2f3136",
+		color: "white",
+		height: "100vh",
 		width: "250px",
 	},
 	menuButton: {

@@ -2,6 +2,7 @@ import { AppBar, Divider, Drawer, Hidden, IconButton, List, ListItem, ListItemTe
 import { Menu } from "@material-ui/icons";
 import { useState } from "react";
 import "./App.css";
+import Chat from "./components/Chat/Chat";
 import useStyles from "./styles";
 
 function App() {
@@ -27,11 +28,11 @@ function App() {
 					<IconButton className={classes.menuButton} color="inherit" onClick={() => setOpen(true)}>
 						<Menu />
 					</IconButton>
+					<Typography>#general</Typography>
 				</Toolbar>
 			</AppBar>
 
-			<Toolbar />
-			<Typography variant="h1">a quick brown fox jumped over the lazy dog</Typography>
+			<Chat />
 
 			<Hidden smUp implementation="css">
 				<Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
