@@ -7,7 +7,10 @@ export default makeStyles(theme => ({
 		minHeight: "100vh",
 		width: "100%",
 		boxSizing: "border-box",
-		padding: theme.spacing(2),
+		padding: "10px",
+		[theme.breakpoints.up("md")]: {
+			padding: theme.spacing(2),
+		},
 		position: "relative",
 	},
 	textField: {
@@ -29,13 +32,21 @@ export default makeStyles(theme => ({
 		display: "flex",
 		justifyContent: "space-around",
 		position: "absolute",
-		bottom: "10px",
+		bottom: "12px",
 		right: "10px",
 		left: "10px",
-		// width: "50%",
+		height: "8vh",
 	},
 	sendButton: {
 		backgroundColor: "#7289da",
 		color: "white",
+	},
+	chatContainer: {
+		height: `calc(90vh - 20px)`,
+		overflowY: "auto",
+	},
+	messageContainer: {
+		display: "flex",
+		flexDirection: "column-reverse",
 	},
 }));
