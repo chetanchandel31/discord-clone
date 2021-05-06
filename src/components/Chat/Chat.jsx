@@ -9,19 +9,21 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore, serverTimestsamp } from "../../firebase/firebase";
 import useFirestore from "../../hooks/useFirestore";
 
-const Chat = () => {
+const Chat = ({ selectedChannel }) => {
+	const collectionRef = firestore.collection(`channels/wCgXz8YJkDqEJBb0Yrqz/${selectedChannel}`);
+
 	const [message, setMessage] = useState("");
 	const classes = useStyles();
 	const [user] = useAuthState(auth);
-	const collectionRef = firestore.collection("channels/wCgXz8YJkDqEJBb0Yrqz/general");
-	const { docs } = useFirestore("channels/wCgXz8YJkDqEJBb0Yrqz/general");
+	const { docs } = useFirestore(`channels/wCgXz8YJkDqEJBb0Yrqz/${selectedChannel}`);
 	const bottomDivRef = useRef();
 
 	useEffect(() => {
 		setTimeout(() => bottomDivRef.current.scrollIntoView(), 1000);
 	}, [bottomDivRef, docs]);
 
-	const sendMessage = () => {
+	const sendMessage = e => {
+		e.preventDefault();
 		if (!message) return;
 		const { displayName, photoURL, uid } = user;
 		collectionRef.add({ message, userName: displayName, photoURL, createdAt: serverTimestsamp(), createdBy: uid });
@@ -40,24 +42,26 @@ const Chat = () => {
 				</div>
 			</div>
 
-			<div className={classes.inputContainer}>
-				<TextField
-					color="primary"
-					className={classes.textField}
-					variant="outlined"
-					placeholder="Message #general"
-					value={message}
-					onChange={({ target }) => setMessage(target.value)}
-					InputProps={{
-						classes: {
-							input: classes.input,
-							notchedOutline: classes.notchedOutline,
-						},
-					}}
-				/>
-				<Button className={classes.sendButton}>
-					<SendIcon onClick={sendMessage} />
-				</Button>
+			<div>
+				<form onSubmit={sendMessage} className={classes.inputContainer}>
+					<TextField
+						color="primary"
+						className={classes.textField}
+						variant="outlined"
+						placeholder={`Message #${selectedChannel}`}
+						value={message}
+						onChange={({ target }) => setMessage(target.value)}
+						InputProps={{
+							classes: {
+								input: classes.input,
+								notchedOutline: classes.notchedOutline,
+							},
+						}}
+					/>
+					<Button type="submit" className={classes.sendButton}>
+						<SendIcon />
+					</Button>
+				</form>
 			</div>
 		</div>
 	);

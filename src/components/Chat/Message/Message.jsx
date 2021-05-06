@@ -3,25 +3,25 @@ import moment from "moment";
 import useStyles from "./styles";
 
 const Message = ({ doc }) => {
-	//avatar, date, message
 	const classes = useStyles();
-	console.log(moment(doc.createdAt?.toDate()).format("MMMM Do YYYY, h:mm a"));
 
 	return (
 		<div className={classes.root}>
 			<Avatar className={classes.avatar} src={doc.photoURL} alt="ok">
-				{doc.userName.charAt(0)}
+				{doc.userName?.charAt(0)}
 			</Avatar>
+
 			<div>
 				<div>
-					<Typography variant="subtitle1" style={{ marginRight: "5px", display: "inline" }}>
+					<Typography variant="subtitle1" className={classes.userName}>
 						{doc.userName}
 					</Typography>
-					<Typography variant="caption" style={{ color: "grey", display: "inline" }}>
+					<Typography variant="caption" className={classes.date}>
 						{moment(doc.createdAt?.toDate()).format("MMMM Do YYYY, h:mm a")}
 					</Typography>
 				</div>
-				<Typography variant="body1" style={{ color: "#dcddde" }}>
+
+				<Typography variant="body1" className={classes.message}>
 					{doc.message}
 				</Typography>
 			</div>

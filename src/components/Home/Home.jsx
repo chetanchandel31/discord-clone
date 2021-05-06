@@ -7,20 +7,22 @@ import useStyles from "./styles";
 
 const Home = () => {
 	const [open, setOpen] = useState(false);
+	const [selectedChannel, setSelectedChannel] = useState("general");
+
 	const classes = useStyles();
 	const drawerItems = (
-		<List disablePadding className={classes.drawer}>
+		<List disablePadding onClick={() => setOpen(false)} className={classes.drawer}>
 			<Toolbar>
 				<Button className={classes.logoutBtn} onClick={() => auth.signOut()}>
 					Logout
 				</Button>
 			</Toolbar>
 			<Divider />
-			<ListItem>
-				<ListItemText primary="#first-item" />
+			<ListItem button onClick={() => setSelectedChannel("general")}>
+				<ListItemText primary="#general" />
 			</ListItem>
-			<ListItem>
-				<ListItemText primary="#second-item" />
+			<ListItem button onClick={() => setSelectedChannel("chit-chat")}>
+				<ListItemText primary="#chit-chat" />
 			</ListItem>
 		</List>
 	);
@@ -32,11 +34,11 @@ const Home = () => {
 					<IconButton className={classes.menuButton} color="inherit" onClick={() => setOpen(true)}>
 						<Menu />
 					</IconButton>
-					<Typography>#general</Typography>
+					<Typography>#{selectedChannel}</Typography>
 				</Toolbar>
 			</AppBar>
 
-			<Chat />
+			<Chat selectedChannel={selectedChannel} />
 
 			<Hidden smUp implementation="css">
 				<Drawer anchor="left" open={open} onClose={() => setOpen(false)}>

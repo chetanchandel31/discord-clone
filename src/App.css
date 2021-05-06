@@ -6,12 +6,12 @@
 	height: 100%;
 }
 
-.makeStyles-chatContainer-138::-webkit-scrollbar {
+.makeStyles-chatContainer-14::-webkit-scrollbar {
 	width: 5px;
 	height: 8px;
 	background-color: #2e3338; /* or add it to the track */
 }
-.makeStyles-chatContainer-138::-webkit-scrollbar-thumb {
+.makeStyles-chatContainer-14::-webkit-scrollbar-thumb {
 	background: #202225;
 	border-radius: 50px;
 }

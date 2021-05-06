@@ -12,4 +12,15 @@ export default makeStyles(theme => ({
 		display: "flex",
 		alignItems: "center",
 	},
+	userName: {
+		marginRight: "5px",
+		display: "inline",
+	},
+	date: {
+		color: "grey",
+		display: "inline",
+	},
+	message: {
+		color: "#dcddde",
+	},
 }));
