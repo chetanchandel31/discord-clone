@@ -32,7 +32,7 @@ const Chat = ({ selectedChannel }) => {
 
 	return (
 		<div className={classes.root}>
-			<div className={classes.chatContainer}>
+			<div className={`${classes.chatContainer} customScrollbar`}>
 				<Toolbar />
 				<div className={classes.messageContainer}>
 					<div ref={bottomDivRef}></div>
