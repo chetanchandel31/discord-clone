@@ -45,6 +45,7 @@ const Chat = ({ selectedChannel }) => {
 			<div>
 				<form onSubmit={sendMessage} className={classes.inputContainer}>
 					<TextField
+						autoFocus
 						color="primary"
 						className={classes.textField}
 						variant="outlined"

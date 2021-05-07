@@ -1,8 +1,8 @@
-import { AppBar, Button, Divider, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Drawer, Hidden, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { useState } from "react";
-import { auth } from "../../firebase/firebase";
 import Chat from "../Chat/Chat";
+import DrawerItems from "./DrawerItems";
 import useStyles from "./styles";
 
 const Home = () => {
@@ -10,22 +10,7 @@ const Home = () => {
 	const [selectedChannel, setSelectedChannel] = useState("general");
 
 	const classes = useStyles();
-	const drawerItems = (
-		<List disablePadding onClick={() => setOpen(false)} className={classes.drawer}>
-			<Toolbar>
-				<Button className={classes.logoutBtn} onClick={() => auth.signOut()}>
-					Logout
-				</Button>
-			</Toolbar>
-			<Divider />
-			<ListItem button onClick={() => setSelectedChannel("general")}>
-				<ListItemText primary="#general" />
-			</ListItem>
-			<ListItem button onClick={() => setSelectedChannel("chit-chat")}>
-				<ListItemText primary="#chit-chat" />
-			</ListItem>
-		</List>
-	);
+	const drawerItems = <DrawerItems setOpen={setOpen} setSelectedChannel={setSelectedChannel} />;
 
 	return (
 		<div className={classes.root}>

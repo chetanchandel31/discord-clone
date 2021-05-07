@@ -15,9 +15,9 @@ export default makeStyles(theme => ({
 	},
 	drawer: {
 		backgroundColor: "#2f3136",
-		color: "white",
 		height: "100vh",
 		width: "250px",
+		color: "#8e9297",
 	},
 	menuButton: {
 		[theme.breakpoints.up("md")]: {
@@ -26,5 +26,15 @@ export default makeStyles(theme => ({
 	},
 	logoutBtn: {
 		color: "grey",
+	},
+	newChannelInput: {
+		marginLeft: "20px",
+		color: "white",
+	},
+	input: {
+		color: "white",
+	},
+	icon: {
+		color: "#8e9297",
 	},
 }));
