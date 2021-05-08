@@ -4,7 +4,7 @@ export default makeStyles(theme => ({
 	root: {
 		backgroundColor: "#36393f",
 		color: "white",
-		minHeight: "100vh",
+		height: "100%",
 		width: "100%",
 		boxSizing: "border-box",
 		padding: "10px",

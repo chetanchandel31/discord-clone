@@ -31,7 +31,7 @@ const DrawerItems = ({ setOpen, setSelectedChannel }) => {
 		e.preventDefault();
 
 		let currentChannels = [...channelNames];
-		let newChannel = newChannelName.replaceAll(" ", "-");
+		let newChannel = newChannelName.replaceAll(" ", "-").toLowerCase();
 		currentChannels.push(newChannel);
 		firestore.collection("channel-names").doc("FOp0pPrxTSUjRxXGI82a").set({ list: currentChannels }, { merge: true });
 
