@@ -6,7 +6,7 @@ export default makeStyles(theme => ({
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
-		height: "100vh",
+		height: "100%",
 		backgroundColor: "#36393f",
 	},
 	button: {

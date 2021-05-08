@@ -6,7 +6,7 @@ import Auth from "./components/Auth/Auth";
 
 function App() {
 	const [user] = useAuthState(auth);
-	console.log(user);
+
 	return user ? <Home /> : <Auth />;
 }
 
