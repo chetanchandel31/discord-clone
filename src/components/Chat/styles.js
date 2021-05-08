@@ -42,7 +42,7 @@ export default makeStyles(theme => ({
 		color: "white",
 	},
 	chatContainer: {
-		height: `calc(100% - 20px - 10vh)`,
+		height: `calc(100% - 10px - 8vh)`,
 		overflowY: "auto",
 	},
 	messageContainer: {
