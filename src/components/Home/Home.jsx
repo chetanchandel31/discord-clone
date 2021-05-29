@@ -10,7 +10,7 @@ const Home = () => {
 	const [selectedChannel, setSelectedChannel] = useState("general");
 
 	const classes = useStyles();
-	const drawerItems = <DrawerItems setOpen={setOpen} setSelectedChannel={setSelectedChannel} />;
+	const drawerItems = <DrawerItems setOpen={setOpen} setSelectedChannel={setSelectedChannel} selectedChannel={selectedChannel} />;
 
 	return (
 		<div className={classes.root}>

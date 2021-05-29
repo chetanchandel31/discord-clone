@@ -5,7 +5,7 @@ import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 import { useEffect, useState } from "react";
 
-const DrawerItems = ({ setOpen, setSelectedChannel }) => {
+const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 	const classes = useStyles();
 	const [channelNames, setChannelNames] = useState([]);
 	const [creatingNewChannel, setCreatingNewChannel] = useState(false);
@@ -84,7 +84,7 @@ const DrawerItems = ({ setOpen, setSelectedChannel }) => {
 			)}
 
 			{channelNames.map((channelName, i) => (
-				<ListItem key={i} button onClick={() => changeChannel(channelName)}>
+				<ListItem key={i} className={channelName === selectedChannel && classes.highlightedChannel} button onClick={() => changeChannel(channelName)}>
 					<ListItemText primary={`# ${channelName}`} />
 				</ListItem>
 			))}

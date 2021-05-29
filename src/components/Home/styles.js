@@ -37,4 +37,14 @@ export default makeStyles(theme => ({
 	icon: {
 		color: "#8e9297",
 	},
+	highlightedChannel: {
+		backgroundColor: "#383c41",
+		height: "48px",
+		boxSizing: "border-box",
+		border: "solid 5px #2f3136",
+		borderRadius: "10px",
+		"&:hover": {
+			backgroundColor: "#383c41",
+		},
+	},
 }));
