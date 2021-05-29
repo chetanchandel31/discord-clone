@@ -32,12 +32,20 @@ const DrawerItems = ({ setOpen, setSelectedChannel }) => {
 
 		let currentChannels = [...channelNames];
 		let newChannel = newChannelName.replaceAll(" ", "-").toLowerCase();
+
+		if (currentChannels.includes(newChannel)) return alert("this channel already exists");
+
 		currentChannels.push(newChannel);
 		firestore.collection("channel-names").doc("FOp0pPrxTSUjRxXGI82a").set({ list: currentChannels }, { merge: true });
 
 		setCreatingNewChannel(false);
 		setSelectedChannel(newChannel);
 		setOpen(false);
+	};
+
+	const toggleNewChannelButton = () => {
+		setCreatingNewChannel(prevState => !prevState);
+		setNewChannelName("");
 	};
 
 	return (
@@ -52,7 +60,7 @@ const DrawerItems = ({ setOpen, setSelectedChannel }) => {
 			<ListItem>
 				<ListItemText primary="add new channel" />
 				<ListItemSecondaryAction>
-					<IconButton className={classes.icon} edge="end" onClick={() => setCreatingNewChannel(prev => !prev)}>
+					<IconButton className={classes.icon} edge="end" onClick={toggleNewChannelButton}>
 						{creatingNewChannel ? <CloseIcon /> : <AddIcon />}
 					</IconButton>
 				</ListItemSecondaryAction>
