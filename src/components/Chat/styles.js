@@ -16,7 +16,12 @@ export default makeStyles(theme => ({
 	textField: {
 		backgroundColor: "#40444b",
 		border: "none",
-		width: "90%",
+		width: "98%",
+		borderRadius: "90px",
+
+		"& > div": {
+			paddingRight: "10px",
+		},
 	},
 	//input's font color
 	input: {
@@ -35,11 +40,18 @@ export default makeStyles(theme => ({
 		bottom: "12px",
 		right: "10px",
 		left: "10px",
-		height: "8vh",
+		// height: "8vh",
 	},
 	sendButton: {
 		backgroundColor: "#7289da",
 		color: "white",
+		height: "45px",
+		width: "45px",
+		minWidth: "45px",
+		borderRadius: "50%",
+		"&:hover": {
+			backgroundColor: "#7289da",
+		},
 	},
 	chatContainer: {
 		height: `calc(100% - 10px - 8vh)`,

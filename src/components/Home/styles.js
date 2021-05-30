@@ -43,6 +43,8 @@ export default makeStyles(theme => ({
 		boxSizing: "border-box",
 		border: "solid 5px #2f3136",
 		borderRadius: "10px",
+		color: "white",
+
 		"&:hover": {
 			backgroundColor: "#383c41",
 		},

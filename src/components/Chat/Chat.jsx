@@ -1,4 +1,4 @@
-import { Button, TextField, Toolbar } from "@material-ui/core";
+import { Button, InputAdornment, TextField, Toolbar, Zoom } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import useStyles from "./styles";
 
@@ -45,7 +45,6 @@ const Chat = ({ selectedChannel }) => {
 			<div>
 				<form onSubmit={sendMessage} className={classes.inputContainer}>
 					<TextField
-						autoFocus
 						color="primary"
 						className={classes.textField}
 						variant="outlined"
@@ -57,11 +56,17 @@ const Chat = ({ selectedChannel }) => {
 								input: classes.input,
 								notchedOutline: classes.notchedOutline,
 							},
+							endAdornment: (
+								<InputAdornment position="end">
+									<Zoom in={message ? true : false}>
+										<Button type="submit" className={classes.sendButton}>
+											<SendIcon />
+										</Button>
+									</Zoom>
+								</InputAdornment>
+							),
 						}}
 					/>
-					<Button type="submit" className={classes.sendButton}>
-						<SendIcon />
-					</Button>
 				</form>
 			</div>
 		</div>
