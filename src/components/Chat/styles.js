@@ -18,7 +18,6 @@ export default makeStyles(theme => ({
 		border: "none",
 		width: "98%",
 		borderRadius: "90px",
-
 		"& > div": {
 			paddingRight: "10px",
 		},
@@ -45,16 +44,19 @@ export default makeStyles(theme => ({
 	sendButton: {
 		backgroundColor: "#7289da",
 		color: "white",
-		height: "45px",
-		width: "45px",
-		minWidth: "45px",
+		height: "48px",
+		width: "48px",
+		minWidth: "48px",
 		borderRadius: "50%",
 		"&:hover": {
 			backgroundColor: "#7289da",
 		},
 	},
+	mediaButton: {
+		color: "#b9bbbe",
+	},
 	chatContainer: {
-		height: `calc(100% - 10px - 8vh)`,
+		height: `calc(100% - 15px - 8vh)`,
 		overflowY: "auto",
 	},
 	messageContainer: {

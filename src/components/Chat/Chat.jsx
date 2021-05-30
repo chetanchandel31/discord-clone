@@ -1,4 +1,5 @@
-import { Button, InputAdornment, TextField, Toolbar, Zoom } from "@material-ui/core";
+import { Button, IconButton, InputAdornment, TextField, Toolbar, Zoom } from "@material-ui/core";
+import PermMediaIcon from "@material-ui/icons/PermMedia";
 import SendIcon from "@material-ui/icons/Send";
 import useStyles from "./styles";
 
@@ -63,6 +64,13 @@ const Chat = ({ selectedChannel }) => {
 											<SendIcon />
 										</Button>
 									</Zoom>
+								</InputAdornment>
+							),
+							startAdornment: (
+								<InputAdornment position="start">
+									<IconButton className={classes.mediaButton}>
+										<PermMediaIcon />
+									</IconButton>
 								</InputAdornment>
 							),
 						}}
