@@ -6,12 +6,14 @@ export default makeStyles(theme => ({
 		color: "white",
 		height: "100%",
 		width: "100%",
+		position: "relative",
 		boxSizing: "border-box",
 		padding: "10px",
+		paddingLeft: "0",
 		[theme.breakpoints.up("md")]: {
 			padding: theme.spacing(2),
+			paddingLeft: "0",
 		},
-		position: "relative",
 	},
 	textField: {
 		backgroundColor: "#40444b",
@@ -19,7 +21,7 @@ export default makeStyles(theme => ({
 		width: "98%",
 		borderRadius: "90px",
 		"& > div": {
-			paddingRight: "10px",
+			paddingRight: "0px",
 		},
 	},
 	//input's font color
@@ -44,9 +46,9 @@ export default makeStyles(theme => ({
 	sendButton: {
 		backgroundColor: "#7289da",
 		color: "white",
-		height: "48px",
-		width: "48px",
-		minWidth: "48px",
+		height: "40px",
+		width: "40px",
+		minWidth: "40px",
 		borderRadius: "50%",
 		"&:hover": {
 			backgroundColor: "#7289da",
@@ -56,7 +58,7 @@ export default makeStyles(theme => ({
 		color: "#b9bbbe",
 	},
 	chatContainer: {
-		height: `calc(100% - 15px - 8vh)`,
+		height: `calc(100% - 10px - 40px)`,
 		overflowY: "auto",
 	},
 	messageContainer: {

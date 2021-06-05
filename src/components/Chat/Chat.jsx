@@ -49,6 +49,7 @@ const Chat = ({ selectedChannel }) => {
 						color="primary"
 						className={classes.textField}
 						variant="outlined"
+						size="small"
 						placeholder={`Message #${selectedChannel}`}
 						value={message}
 						onChange={({ target }) => setMessage(target.value)}
