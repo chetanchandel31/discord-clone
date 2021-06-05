@@ -1,8 +1,10 @@
 import { Avatar, Typography } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import moment from "moment";
 import useStyles from "./styles";
 
-const Message = ({ doc }) => {
+const Message = ({ doc, user, deleteMessage }) => {
 	const classes = useStyles();
 
 	return (
@@ -24,6 +26,13 @@ const Message = ({ doc }) => {
 				<Typography variant="body1" className={classes.message}>
 					{doc.message}
 				</Typography>
+
+				{user.uid === doc.createdBy && (
+					<div className={`${classes.iconContainer} iconContainer`}>
+						<DeleteIcon onClick={() => deleteMessage(doc.id)} />
+						<EditIcon />
+					</div>
+				)}
 			</div>
 		</div>
 	);

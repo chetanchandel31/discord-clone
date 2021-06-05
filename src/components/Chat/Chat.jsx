@@ -31,6 +31,10 @@ const Chat = ({ selectedChannel }) => {
 		setMessage("");
 	};
 
+	const deleteMessage = docId => {
+		if (window.confirm("Are you sure you want to delete this message?")) collectionRef.doc(docId).delete();
+	};
+
 	return (
 		<div className={classes.root}>
 			<div className={`${classes.chatContainer} customScrollbar`}>
@@ -38,7 +42,7 @@ const Chat = ({ selectedChannel }) => {
 				<div className={classes.messageContainer}>
 					<div ref={bottomDivRef}></div>
 					{docs.map(doc => (
-						<Message doc={doc} key={doc.id} />
+						<Message doc={doc} key={doc.id} user={user} deleteMessage={deleteMessage} />
 					))}
 				</div>
 			</div>
