@@ -17,7 +17,7 @@ export default makeStyles(theme => ({
 	inner: {
 		backgroundColor: "#36393f",
 		borderRadius: "5px",
-		width: "80%",
+		width: "90%",
 		maxWidth: "400px",
 	},
 	mainContent: {
