@@ -45,7 +45,7 @@ export default makeStyles(theme => ({
 		display: "none",
 		position: "absolute",
 		right: 0,
-		top: "-20%",
+		top: "-12px",
 
 		"& svg": {
 			color: "#b9bbbe",

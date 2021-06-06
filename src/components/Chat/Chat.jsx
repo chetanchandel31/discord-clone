@@ -35,6 +35,11 @@ const Chat = ({ selectedChannel }) => {
 		if (window.confirm("Are you sure you want to delete this message?")) collectionRef.doc(docId).delete();
 	};
 
+	const editMessage = (id, message) => {
+		collectionRef.doc(id).set({ message }, { merge: true });
+		console.log(id, message);
+	};
+
 	return (
 		<div className={classes.root}>
 			<div className={`${classes.chatContainer} customScrollbar`}>
@@ -42,7 +47,7 @@ const Chat = ({ selectedChannel }) => {
 				<div className={classes.messageContainer}>
 					<div ref={bottomDivRef}></div>
 					{docs.map(doc => (
-						<Message doc={doc} key={doc.id} user={user} deleteMessage={deleteMessage} />
+						<Message doc={doc} key={doc.id} user={user} deleteMessage={deleteMessage} editMessage={editMessage} />
 					))}
 				</div>
 			</div>
