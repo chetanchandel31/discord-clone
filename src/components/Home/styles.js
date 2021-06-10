@@ -19,6 +19,41 @@ export default makeStyles(theme => ({
 		width: "250px",
 		color: "#8e9297",
 	},
+	drawerContainer: {
+		"& > div": {
+			borderRight: "none",
+		},
+	},
+	channel: {
+		boxSizing: "border-box",
+		height: "48px",
+		position: "relative",
+		border: "solid 5px #2f3136",
+
+		"&:hover button": {
+			display: "inline-flex",
+		},
+	},
+	highlightedChannel: {
+		backgroundColor: "#383c41",
+		border: "solid 5px #2f3136",
+		borderRadius: "10px",
+		color: "white",
+
+		"&:hover": {
+			backgroundColor: "#383c41",
+		},
+	},
+	deleteIcon: {
+		color: "#8e9297",
+		position: "absolute",
+		right: "8px",
+		display: "none",
+
+		"&:hover": {
+			color: "#cecece",
+		},
+	},
 	menuButton: {
 		[theme.breakpoints.up("md")]: {
 			display: "none",
@@ -36,17 +71,5 @@ export default makeStyles(theme => ({
 	},
 	icon: {
 		color: "#8e9297",
-	},
-	highlightedChannel: {
-		backgroundColor: "#383c41",
-		height: "48px",
-		boxSizing: "border-box",
-		border: "solid 5px #2f3136",
-		borderRadius: "10px",
-		color: "white",
-
-		"&:hover": {
-			backgroundColor: "#383c41",
-		},
 	},
 }));

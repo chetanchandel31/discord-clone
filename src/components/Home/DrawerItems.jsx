@@ -84,8 +84,17 @@ const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 			)}
 
 			{channelNames.map((channelName, i) => (
-				<ListItem key={i} className={channelName === selectedChannel ? classes.highlightedChannel : null} button onClick={() => changeChannel(channelName)}>
+				<ListItem
+					key={i}
+					className={`${classes.channel} ${channelName === selectedChannel ? `${classes.highlightedChannel}` : ""}`}
+					button
+					onClick={() => changeChannel(channelName)}
+				>
 					<ListItemText primary={`# ${channelName}`} />
+
+					<IconButton edge="end" className={`${classes.deleteIcon} deleteIcon`}>
+						{channelName !== "general" ? <CloseIcon /> : null}
+					</IconButton>
 				</ListItem>
 			))}
 		</List>

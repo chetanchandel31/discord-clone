@@ -31,7 +31,7 @@ const Home = () => {
 				</Drawer>
 			</Hidden>
 			<Hidden smDown implementation="css">
-				<Drawer variant="permanent" anchor="left">
+				<Drawer variant="permanent" className={classes.drawerContainer} anchor="left">
 					{drawerItems}
 				</Drawer>
 			</Hidden>
