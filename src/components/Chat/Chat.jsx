@@ -17,10 +17,10 @@ const Chat = ({ selectedChannel }) => {
 	const classes = useStyles();
 	const [user] = useAuthState(auth);
 	const { docs } = useFirestore(`channels/wCgXz8YJkDqEJBb0Yrqz/${selectedChannel}`);
-	const bottomDivRef = useRef();
+	const bottomDivRef = useRef(null);
 
 	useEffect(() => {
-		setTimeout(() => bottomDivRef.current.scrollIntoView(), 1000);
+		bottomDivRef.current.scrollIntoView();
 	}, [bottomDivRef, docs]);
 
 	const sendMessage = e => {
@@ -37,7 +37,6 @@ const Chat = ({ selectedChannel }) => {
 
 	const editMessage = (id, message) => {
 		collectionRef.doc(id).set({ message }, { merge: true });
-		console.log(id, message);
 	};
 
 	return (

@@ -43,6 +43,23 @@ const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 		setOpen(false);
 	};
 
+	useEffect(() => {
+		if (!channelNames.includes(selectedChannel)) setSelectedChannel(channelNames[channelNames.length - 1]);
+		// eslint-disable-next-line
+	}, [channelNames]);
+
+	const removeChannel = channelName => {
+		setChannelNames(prevChannels => {
+			const oldChannels = [...prevChannels];
+			const filteredChannels = oldChannels.filter(el => el !== channelName);
+
+			setSelectedChannel(filteredChannels[filteredChannels.length - 1]);
+			firestore.collection("channel-names").doc("FOp0pPrxTSUjRxXGI82a").set({ list: filteredChannels }, { merge: true });
+
+			return filteredChannels;
+		});
+	};
+
 	const toggleNewChannelButton = () => {
 		setCreatingNewChannel(prevState => !prevState);
 		setNewChannelName("");
@@ -92,7 +109,7 @@ const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 				>
 					<ListItemText primary={`# ${channelName}`} />
 
-					<IconButton edge="end" className={`${classes.deleteIcon} deleteIcon`}>
+					<IconButton onClick={() => removeChannel(channelName)} className={`${classes.deleteIcon} deleteIcon`} edge="end">
 						{channelName !== "general" ? <CloseIcon /> : null}
 					</IconButton>
 				</ListItem>
