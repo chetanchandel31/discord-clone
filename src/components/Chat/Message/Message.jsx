@@ -3,11 +3,13 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import moment from "moment";
 import { useState } from "react";
+import ProfileCard from "../../ProfileCard/ProfileCard";
 import EditModal from "../EditModal/EditModal";
 import useStyles from "./styles";
 
 const Message = ({ doc, user, deleteMessage, editMessage }) => {
 	const [showModal, setShowModal] = useState(false);
+	const [showProfileCard, setShowProfileCard] = useState(false);
 	const classes = useStyles();
 
 	return (
@@ -43,6 +45,7 @@ const Message = ({ doc, user, deleteMessage, editMessage }) => {
 			</div>
 
 			{showModal && <EditModal setShowModal={setShowModal} doc={doc} editMessage={editMessage} />}
+			{showProfileCard && <ProfileCard setShowProfileCard={setShowProfileCard} />}
 		</div>
 	);
 };

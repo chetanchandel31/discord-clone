@@ -44,7 +44,7 @@ const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 	};
 
 	useEffect(() => {
-		if (!channelNames.includes(selectedChannel)) setSelectedChannel(channelNames[channelNames.length - 1]);
+		if (!channelNames.includes(selectedChannel) && channelNames.length > 0) setSelectedChannel(channelNames[channelNames.length - 1]);
 		// eslint-disable-next-line
 	}, [channelNames]);
 
@@ -53,7 +53,6 @@ const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 			const oldChannels = [...prevChannels];
 			const filteredChannels = oldChannels.filter(el => el !== channelName);
 
-			setSelectedChannel(filteredChannels[filteredChannels.length - 1]);
 			firestore.collection("channel-names").doc("FOp0pPrxTSUjRxXGI82a").set({ list: filteredChannels }, { merge: true });
 
 			return filteredChannels;
@@ -101,13 +100,8 @@ const DrawerItems = ({ setOpen, setSelectedChannel, selectedChannel }) => {
 			)}
 
 			{channelNames.map((channelName, i) => (
-				<ListItem
-					key={i}
-					className={`${classes.channel} ${channelName === selectedChannel ? `${classes.highlightedChannel}` : ""}`}
-					button
-					onClick={() => changeChannel(channelName)}
-				>
-					<ListItemText primary={`# ${channelName}`} />
+				<ListItem key={i} className={`${classes.channel} ${channelName === selectedChannel ? `${classes.highlightedChannel}` : ""}`} button>
+					<ListItemText onClick={e => changeChannel(channelName)} primary={`# ${channelName}`} />
 
 					<IconButton onClick={() => removeChannel(channelName)} className={`${classes.deleteIcon} deleteIcon`} edge="end">
 						{channelName !== "general" ? <CloseIcon /> : null}
