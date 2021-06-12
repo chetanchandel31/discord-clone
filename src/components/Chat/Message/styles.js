@@ -20,6 +20,7 @@ export default makeStyles(theme => ({
 
 	avatar: {
 		marginRight: "10px",
+		cursor: "pointer",
 	},
 
 	messageHeader: {

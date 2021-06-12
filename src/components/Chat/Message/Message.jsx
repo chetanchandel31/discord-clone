@@ -14,7 +14,7 @@ const Message = ({ doc, user, deleteMessage, editMessage }) => {
 
 	return (
 		<div className={classes.root}>
-			<Avatar className={classes.avatar} src={doc.photoURL} alt="ok">
+			<Avatar onClick={() => setShowProfileCard(true)} className={classes.avatar} src={doc.photoURL} alt="ok">
 				{doc.userName?.charAt(0)}
 			</Avatar>
 
@@ -45,7 +45,7 @@ const Message = ({ doc, user, deleteMessage, editMessage }) => {
 			</div>
 
 			{showModal && <EditModal setShowModal={setShowModal} doc={doc} editMessage={editMessage} />}
-			{showProfileCard && <ProfileCard setShowProfileCard={setShowProfileCard} />}
+			{showProfileCard && <ProfileCard setShowProfileCard={setShowProfileCard} userName={doc.userName} photoURL={doc.photoURL} />}
 		</div>
 	);
 };
