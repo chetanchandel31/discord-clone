@@ -9,8 +9,9 @@ const ProfileCard = ({ setShowProfileCard, userName, photoURL }) => {
 	const cardRef = useRef();
 
 	const updateNote = note => {
-		setNote();
+		setNote(note);
 		localStorage.setItem(userName, note);
+		if (!note) localStorage.removeItem(userName);
 	};
 
 	return (
