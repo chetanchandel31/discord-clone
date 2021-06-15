@@ -4,6 +4,7 @@ import SendIcon from "@material-ui/icons/Send";
 import useStyles from "./styles";
 
 import Message from "./Message/Message";
+import ImageUploader from "./ImageUploader/ImageUploader";
 import { useEffect, useRef, useState } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -13,11 +14,13 @@ import useFirestore from "../../hooks/useFirestore";
 const Chat = ({ selectedChannel }) => {
 	const collectionRef = firestore.collection(`channels/wCgXz8YJkDqEJBb0Yrqz/${selectedChannel}`);
 
+	const [file, setFile] = useState(false);
 	const [message, setMessage] = useState("");
 	const classes = useStyles();
 	const [user] = useAuthState(auth);
 	const { docs } = useFirestore(`channels/wCgXz8YJkDqEJBb0Yrqz/${selectedChannel}`);
-	const bottomDivRef = useRef(null);
+	const bottomDivRef = useRef();
+	const inputFileRef = useRef();
 
 	useEffect(() => {
 		bottomDivRef.current.scrollIntoView();
@@ -36,7 +39,7 @@ const Chat = ({ selectedChannel }) => {
 	};
 
 	const editMessage = (id, message) => {
-		collectionRef.doc(id).set({ message }, { merge: true });
+		collectionRef.doc(id).set({ message, edited: true }, { merge: true });
 	};
 
 	return (
@@ -77,15 +80,18 @@ const Chat = ({ selectedChannel }) => {
 							),
 							startAdornment: (
 								<InputAdornment position="start">
-									<IconButton className={classes.mediaButton}>
+									<IconButton className={classes.mediaButton} onClick={() => inputFileRef.current.click()}>
 										<PermMediaIcon />
 									</IconButton>
 								</InputAdornment>
 							),
 						}}
 					/>
+					<input type="file" accept=".png, .jpg, .jpeg" onChange={({ target }) => setFile(target.files[0])} ref={inputFileRef} style={{ display: "none" }} />
 				</form>
 			</div>
+
+			{file && <ImageUploader file={file} setFile={setFile} selectedChannel={selectedChannel} />}
 		</div>
 	);
 };

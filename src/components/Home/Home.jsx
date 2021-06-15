@@ -26,7 +26,7 @@ const Home = () => {
 			<Chat selectedChannel={selectedChannel} />
 
 			<Hidden smUp implementation="css">
-				<Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+				<Drawer anchor="left" className={classes.drawerContainer} open={open} onClose={() => setOpen(false)}>
 					{drawerItems}
 				</Drawer>
 			</Hidden>

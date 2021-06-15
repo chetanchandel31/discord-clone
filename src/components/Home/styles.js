@@ -22,6 +22,7 @@ export default makeStyles(theme => ({
 	drawerContainer: {
 		"& > div": {
 			borderRight: "none",
+			backgroundColor: "#2f3136",
 		},
 	},
 	channel: {

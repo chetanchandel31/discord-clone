@@ -24,13 +24,15 @@ const Message = ({ doc, user, deleteMessage, editMessage }) => {
 						{doc.userName}
 					</Typography>
 					<Typography variant="caption" className={classes.date}>
-						{moment(doc.createdAt?.toDate()).format("MMMM Do YYYY, h:mm a")}
+						{moment(doc.createdAt?.toDate()).format("MMMM Do YYYY, h:mm a")} {doc.edited && "(edited)"}
 					</Typography>
 				</div>
 
 				<Typography variant="body1" className={classes.message}>
 					{doc.message}
 				</Typography>
+
+				{doc.image && <img src={doc.image} alt="messageImage" style={{ maxWidth: "50%", borderRadius: "3px" }} />}
 
 				{user.uid === doc.createdBy && (
 					<div className={`${classes.iconContainer} iconContainer`}>
