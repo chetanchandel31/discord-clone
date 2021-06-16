@@ -32,11 +32,11 @@ const Message = ({ doc, user, deleteMessage, editMessage }) => {
 					{doc.message}
 				</Typography>
 
-				{doc.image && <img src={doc.image} alt="messageImage" style={{ maxWidth: "50%", borderRadius: "3px" }} />}
+				{doc.image && <img src={doc.image} className={classes.messageImage} alt="messageImage" />}
 
 				{user.uid === doc.createdBy && (
 					<div className={`${classes.iconContainer} iconContainer`}>
-						<DeleteIcon onClick={() => deleteMessage(doc.id)} />
+						<DeleteIcon onClick={() => deleteMessage(doc.id, doc.image || null)} />
 						<EditIcon
 							onClick={() => {
 								setShowModal(true);

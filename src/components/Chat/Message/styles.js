@@ -60,4 +60,12 @@ export default makeStyles(theme => ({
 			},
 		},
 	},
+
+	messageImage: {
+		maxWidth: "50%",
+		borderRadius: "5px",
+		[theme.breakpoints.down("sm")]: {
+			maxWidth: "80%",
+		},
+	},
 }));

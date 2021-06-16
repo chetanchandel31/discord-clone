@@ -8,7 +8,7 @@ import ImageUploader from "./ImageUploader/ImageUploader";
 import { useEffect, useRef, useState } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, firestore, serverTimestsamp } from "../../firebase/firebase";
+import { auth, firebaseStorage, firestore, serverTimestsamp } from "../../firebase/firebase";
 import useFirestore from "../../hooks/useFirestore";
 
 const Chat = ({ selectedChannel }) => {
@@ -34,8 +34,11 @@ const Chat = ({ selectedChannel }) => {
 		setMessage("");
 	};
 
-	const deleteMessage = docId => {
-		if (window.confirm("Are you sure you want to delete this message?")) collectionRef.doc(docId).delete();
+	const deleteMessage = (docId, imageUrl) => {
+		if (window.confirm("Are you sure you want to delete this message?")) {
+			collectionRef.doc(docId).delete();
+			if (imageUrl) firebaseStorage.refFromURL(imageUrl).delete();
+		}
 	};
 
 	const editMessage = (id, message) => {
