@@ -61,11 +61,33 @@ export default makeStyles(theme => ({
 		},
 	},
 
-	messageImage: {
+	imageContainer: {
 		maxWidth: "50%",
-		borderRadius: "5px",
+		position: "relative",
+
+		"&:hover .downloadButton": {
+			display: "inline-flex",
+		},
 		[theme.breakpoints.down("sm")]: {
 			maxWidth: "80%",
+		},
+	},
+
+	messageImage: {
+		width: "100%",
+		borderRadius: "5px",
+		display: "block",
+	},
+
+	downloadButton: {
+		display: "none",
+		position: "absolute",
+		top: "0",
+		right: "0",
+		color: "white",
+		backgroundColor: "rgba(0,0,0,0.5)",
+		"&:hover": {
+			backgroundColor: "rgba(0,0,0,0.5)",
 		},
 	},
 }));

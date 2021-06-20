@@ -22,8 +22,10 @@ const Chat = ({ selectedChannel }) => {
 	const bottomDivRef = useRef();
 	const inputFileRef = useRef();
 
+	const scrollToBottom = () => bottomDivRef.current.scrollIntoView();
+
 	useEffect(() => {
-		bottomDivRef.current.scrollIntoView();
+		scrollToBottom();
 	}, [bottomDivRef, docs]);
 
 	const sendMessage = e => {
@@ -52,7 +54,7 @@ const Chat = ({ selectedChannel }) => {
 				<div className={classes.messageContainer}>
 					<div ref={bottomDivRef}></div>
 					{docs.map(doc => (
-						<Message doc={doc} key={doc.id} user={user} deleteMessage={deleteMessage} editMessage={editMessage} />
+						<Message doc={doc} key={doc.id} user={user} deleteMessage={deleteMessage} editMessage={editMessage} scrollToBottom={scrollToBottom} />
 					))}
 				</div>
 			</div>
