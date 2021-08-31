@@ -14,7 +14,7 @@ const Message = ({ doc, user, deleteMessage, editMessage, scrollToBottom }) => {
 	const [showModal, setShowModal] = useState(false);
 	const [showProfileCard, setShowProfileCard] = useState(false);
 	const classes = useStyles();
-	const actualDeleteButtonRef = useRef();
+	const actualDownloadButtonRef = useRef();
 
 	return (
 		<div className={classes.root}>
@@ -39,11 +39,11 @@ const Message = ({ doc, user, deleteMessage, editMessage, scrollToBottom }) => {
 				{doc.image && (
 					<div className={classes.imageContainer}>
 						<img src={doc.image} className={classes.messageImage} onLoad={scrollToBottom} alt="messageImage" />
-						<IconButton onClick={() => actualDeleteButtonRef.current.children[0].click()} className={`${classes.downloadButton} downloadButton`}>
+						<IconButton onClick={() => actualDownloadButtonRef.current.children[0].click()} className={`${classes.downloadButton} downloadButton`}>
 							<DowmloadIcon />
 						</IconButton>
 
-						<div style={{ display: "none" }} ref={actualDeleteButtonRef}>
+						<div style={{ display: "none" }} ref={actualDownloadButtonRef}>
 							<ImageDownloader imageUrl={doc.image} imageTitle={"discord-clone-image"} />
 						</div>
 					</div>
